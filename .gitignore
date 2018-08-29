@@ -1,0 +1,10 @@
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.~lock*
+~$*
+
+env/
+__pycache__/
