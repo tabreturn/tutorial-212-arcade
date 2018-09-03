@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>212-ARCADE</title>
+    <meta name="description" content="................................" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='screen.css') }}" />
+  </head>
+
+  <body>
+    <div id="scanlines"></div>
+
+    <div id="container">
+
+        <img id="logo" src="{{ url_for('static', filename='logo.gif') }}" />
+
+        <h1>HIGH SCORES - PACMAN</h1>
+        <table id="highscores">
+          <tr>
+            <th>NAME</th>
+            <th>DATE</th>
+            <th>SCORE</th>
+          </tr>
+          <tr>
+            <td>TAB</td>
+            <td>2018-01-03</td>
+            <td>181123</td>
+          </tr>
+        </table>
+
+      <h1>ADD SCORE</h1>
+
+      <form id="addscore">
+        NAME:&nbsp;<input id="name" type="text" /><br />
+        DATE:&nbsp;<input id="date" type="text" /><br />
+        SCORE:<input id="score" type="text" /><br />
+        <p>
+          <a>SUBMIT-&gt;</a>
+        </p>
+      </form>
+
+    </div>
+
+  </body>
+
+  <script>
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        //alert(this.responseText);
+        console.log('T');
+      }
+    };
+    xhttp.open('POST', 'http://localhost:5000/user', true);
+    xhttp.setRequestHeader('Content-type', 'application/json');
+    xhttp.send('Your JSON Data Here');
+  </script>
+
+</html>
+
+<!--
+    Browser developer tools
+        console.log()
+    Adding JS to a webpage
+        Embedded, external
+        Script placement
+    Query selectors
+    Statements, comments
+    Variables, scope, datatypes
+    Conditional statements
+        Comparison operators
+        if/else statements
+        loops
+    Functions
+    Browser object
+    Events
+    Bar chart task
+    Greasemonkey intro
+-->

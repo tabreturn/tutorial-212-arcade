@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=VT323');
+
+body {
+  background-color: #151515;
+  color: #EEE;
+  font-family: 'VT323', monospace;
+  font-size: 1.6rem;
+  padding: 1em;
+}
+
+#scanlines {
+  background-image: url(scanline.svg);
+  background-size: 4px;
+  height: 100%;
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+#container {
+  max-width: 600px;
+}
+
+h1 {
+  color: #0FF;
+  font-size: inherit;
+  font-weight: normal;
+  margin: 2em 0;
+}
+
+#logo {
+  height: 160px;
+  margin-top: 10px;
+  width: 280px;
+}
+
+#highscores {
+  width: 100%;
+}
+
+#highscores tr td,
+#highscores tr th {
+  font-weight: bold;
+  text-align: left;
+  width: 30%;
+}
+
+#highscores tr td:first-child {
+  text-align: left;
+  width: 40%;
+}
+
+#highscores tr td:last-child,
+#highscores tr th:last-child {
+  text-align: right;
+}
+
+#addscore a {
+  color: #0D0;
+  cursor: pointer;
+}
+
+#addscore input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid #EEE;
+  color: #EEE;
+  font-family: 'VT323', monospace;
+  font-size: inherit;
+  text-transform: uppercase;
+}
