@@ -2,10 +2,16 @@
 
 body {
   background-color: #151515;
+  background-image: url(logo.gif);
+  background-position: 33px 30px;
+  background-repeat: no-repeat;
+  background-size: 400px 210px;
   color: #EEE;
   font-family: 'VT323', monospace;
   font-size: 1.6rem;
-  padding: 1em;
+  line-height: 1.5em;
+  padding: 25px;
+  padding-top: 250px;
 }
 
 #scanlines {
@@ -27,16 +33,11 @@ h1 {
   color: #0FF;
   font-size: inherit;
   font-weight: normal;
-  margin: 2em 0;
-}
-
-#logo {
-  height: 160px;
-  margin-top: 10px;
-  width: 280px;
+  margin: 25px 0;
 }
 
 #highscores {
+  border-collapse: collapse;
   width: 100%;
 }
 

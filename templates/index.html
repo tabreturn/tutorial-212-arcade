@@ -15,8 +15,6 @@
 
     <div id="container">
 
-        <img id="logo" src="{{ url_for('static', filename='logo.gif') }}" />
-
         <h1>HIGH SCORES - PACMAN</h1>
         <table id="highscores">
           <tr>
@@ -38,45 +36,14 @@
         DATE:&nbsp;<input id="date" type="text" /><br />
         SCORE:<input id="score" type="text" /><br />
         <p>
-          <a>SUBMIT-&gt;</a>
+          <a id="submit">SUBMIT-&gt;</a>
         </p>
       </form>
 
     </div>
 
+    <script src="{{ url_for('static', filename='js.js') }}"></script>
+
   </body>
 
-  <script>
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        //alert(this.responseText);
-        console.log('T');
-      }
-    };
-    xhttp.open('POST', 'http://localhost:5000/user', true);
-    xhttp.setRequestHeader('Content-type', 'application/json');
-    xhttp.send('Your JSON Data Here');
-  </script>
-
 </html>
-
-<!--
-    Browser developer tools
-        console.log()
-    Adding JS to a webpage
-        Embedded, external
-        Script placement
-    Query selectors
-    Statements, comments
-    Variables, scope, datatypes
-    Conditional statements
-        Comparison operators
-        if/else statements
-        loops
-    Functions
-    Browser object
-    Events
-    Bar chart task
-    Greasemonkey intro
--->
