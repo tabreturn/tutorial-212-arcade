@@ -15,19 +15,27 @@
 
     <div id="container">
 
-        <h1>HIGH SCORES - PACMAN</h1>
-        <table id="highscores">
-          <tr>
-            <th>NAME</th>
-            <th>DATE</th>
-            <th>SCORE</th>
-          </tr>
-          <tr>
-            <td>TAB</td>
-            <td>2018-01-03</td>
-            <td>181123</td>
-          </tr>
-        </table>
+      <h1>HIGH SCORES - PACMAN</h1>
+
+      <table id="highscores">
+        <tr>
+          <th>NAME</th>
+          <th>DATE</th>
+          <th>SCORE</th>
+        </tr>
+        <tr>
+          <td>TAB</td>
+          <td>2018-01-03</td>
+          <td>181123</td>
+        </tr>
+      </table>
+
+      <div id="chart">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
 
       <h1>ADD SCORE</h1>
 
@@ -35,9 +43,7 @@
         NAME:&nbsp;<input id="name" type="text" /><br />
         DATE:&nbsp;<input id="date" type="text" /><br />
         SCORE:<input id="score" type="text" /><br />
-        <p>
-          <a id="submit">SUBMIT-&gt;</a>
-        </p>
+        <a>SUBMIT-&gt;</a>
       </form>
 
     </div>

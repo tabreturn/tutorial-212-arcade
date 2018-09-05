@@ -1,22 +1,30 @@
 @import url('https://fonts.googleapis.com/css?family=VT323');
 
+* {
+  margin: 0;
+  padding: 0
+}
+
 body {
   background-color: #151515;
-  background-image: url(logo.gif);
-  background-position: 33px 30px;
+  background-image: url('logo.gif');
+  background-position: 24px 17px;
   background-repeat: no-repeat;
-  background-size: 400px 210px;
+  background-size: 442px 238px;
   color: #EEE;
   font-family: 'VT323', monospace;
-  font-size: 1.6rem;
-  line-height: 1.5em;
-  padding: 25px;
-  padding-top: 250px;
+  font-size: 26px;
+  line-height: 33.8px;
+  letter-spacing: 1px;
+  padding: 23px;
+  padding-top: 280px;
 }
 
 #scanlines {
-  background-image: url(scanline.svg);
-  background-size: 4px;
+  background-image: url('grid.png');
+  background-size: 11.35px 17px;
+  //background-image: url('scanline.svg');
+  //background-size: 4px;
   height: 100%;
   left: 0;
   pointer-events: none;
@@ -33,7 +41,7 @@ h1 {
   color: #0FF;
   font-size: inherit;
   font-weight: normal;
-  margin: 25px 0;
+  margin: 17px 0;
 }
 
 #highscores {
@@ -58,11 +66,6 @@ h1 {
   text-align: right;
 }
 
-#addscore a {
-  color: #0D0;
-  cursor: pointer;
-}
-
 #addscore input {
   background-color: transparent;
   border: none;
@@ -71,4 +74,29 @@ h1 {
   font-family: 'VT323', monospace;
   font-size: inherit;
   text-transform: uppercase;
+}
+
+#addscore a {
+  border: none;
+  color: #0D0;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+  margin: 17px 0;
+}
+
+#chart {
+  margin-bottom: -9px;
+  margin-top: 10px;
+}
+
+#chart .bar {
+  background-color: red;
+  height: 17px;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-position: -46px 17px;
+  }
 }

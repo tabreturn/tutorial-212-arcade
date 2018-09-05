@@ -1,8 +1,19 @@
-document.getElementById('submit').addEventListener('click', function(){
-  console.log ( document.getElementById('name').value )
-  console.log ( document.getElementById('date').value )
-  console.log ( document.getElementById('score').value )
+// submit button
+
+document.querySelector('#addscore a').addEventListener('click', function() {
+  name = document.getElementById('name').value;
+  date =  document.getElementById('date').value;
+  score = document.getElementById('score').value;
+
+  var entry = document.querySelector('#highscores tr:last-child');
+  var clone = entry.cloneNode(true);
+  clone.querySelector('td:nth-child(1)').textContent = name;
+  clone.querySelector('td:nth-child(2)').textContent = date;
+  clone.querySelector('td:nth-child(3)').textContent = score;
+  document.getElementById('highscores').appendChild(clone);
 })
+
+// 
 
 var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
