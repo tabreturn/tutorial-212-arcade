@@ -2,29 +2,35 @@
 
 * {
   margin: 0;
-  padding: 0
+  padding: 0;
+  /*outline: yellow 1px solid;*/
 }
 
 body {
   background-color: #151515;
   background-image: url('logo.gif');
-  background-position: 24px 17px;
+  background-position: 23px 22px;
   background-repeat: no-repeat;
-  background-size: 442px 238px;
-  color: #EEE;
+  background-size: 442px 220px;
+  color: #DDD;
   font-family: 'VT323', monospace;
-  font-size: 26px;
-  line-height: 33.8px;
-  letter-spacing: 1px;
+  font-size: 27px;
+  line-height: 31px;
   padding: 23px;
-  padding-top: 280px;
+  padding-top: 265px;
+}
+
+::selection {
+  background-color: #0D0;
+}
+::-moz-selection {
+  background-color: #0D0;
 }
 
 #scanlines {
-  background-image: url('grid.png');
-  background-size: 11.35px 17px;
-  //background-image: url('scanline.svg');
-  //background-size: 4px;
+  background-image: url('scanline.svg');
+  background-size: 4px;
+  /*background-image: url('grid.png'); background-size: 11.35px 22px;*/
   height: 100%;
   left: 0;
   pointer-events: none;
@@ -35,23 +41,33 @@ body {
 
 #container {
   max-width: 600px;
+  min-width: 300px;
 }
 
 h1 {
-  color: #0FF;
+  color: #0DD;
   font-size: inherit;
   font-weight: normal;
-  margin: 17px 0;
+  padding: 17px 0;
+}
+
+#chart {
+  padding-bottom: 22px;
+}
+
+#chart .bar {
+  height: 22px;
 }
 
 #highscores {
   border-collapse: collapse;
+  margin: -2px 0;
   width: 100%;
 }
 
 #highscores tr td,
 #highscores tr th {
-  font-weight: bold;
+  font-weight: normal;
   text-align: left;
   width: 30%;
 }
@@ -69,11 +85,14 @@ h1 {
 #addscore input {
   background-color: transparent;
   border: none;
-  border-bottom: 3px solid #EEE;
-  color: #EEE;
+  color: #DDD;
   font-family: 'VT323', monospace;
   font-size: inherit;
-  text-transform: uppercase;
+  width: 162px
+}
+
+#addscore {
+  margin-top: -14px;
 }
 
 #addscore a {
@@ -81,18 +100,16 @@ h1 {
   color: #0D0;
   cursor: pointer;
   display: inline-block;
-  padding: 0;
-  margin: 17px 0;
+  padding-top: 5px;
 }
 
-#chart {
-  margin-bottom: -9px;
-  margin-top: 10px;
+#addscore .alert {
+  animation: blink 1s step-start 0s infinite;
+  color: #D00;
 }
 
-#chart .bar {
-  background-color: red;
-  height: 17px;
+@keyframes blink {
+  50% { opacity: 0.0 }
 }
 
 @media only screen and (max-width: 600px) {

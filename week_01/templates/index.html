@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>212-ARCADE</title>
+    <meta name="description" content="High scores for arcade games." />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='screen.css') }}" />
+  </head>
+
+  <body>
+    <div id="scanlines"></div>
+
+    <div id="container">
+
+      <h1>HIGH SCORES - PACMAN</h1>
+
+      <div id="chart">
+        <!--
+        <div class="bar" style="background-color:#D00; width:95%"></div>
+        -->
+      </div>
+
+      <table id="highscores">
+        <tr>
+          <th>[NAME]</th>
+          <th>[DATE]</th>
+          <th>[SCORE]</th>
+        </tr>
+        <!--
+        <tr style="color:#D00">
+          <td>TAB</td>
+          <td>1991-03-03</td>
+          <td>12345</td>
+        </tr>
+        -->
+      </table>
+
+      <h1>ADD SCORE</h1>
+
+      <form id="addscore">
+        ╔════════════════╗<br />
+        ║ NAME:&nbsp; <input id="name"  type="text" placeholder="..............." /> ║<br />
+        ║ DATE:&nbsp; <input id="date"  type="text" placeholder="YYYY-MM-DD....." /> ║<br />
+        ║ SCORE:      <input id="score" type="text" placeholder="..............." /> ║<br />
+        ╚════════════════╝<br />
+        <a>SUBMIT-&gt;</a>
+        <span class="alert"></span>
+      </form>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js.js') }}"></script>
+
+  </body>
+
+</html>
