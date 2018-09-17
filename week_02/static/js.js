@@ -62,5 +62,35 @@ document.querySelector('#addscore a').addEventListener('click', function() {
   }
   else {
     insertEntry(entry);
+    scoresList();
   }
+
 });
+
+/*
+// api test
+
+document.querySelector('#addscore a').addEventListener('click', function() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    console.log(this.responseText);
+  };
+  xhttp.open('GET', 'https://love-calculator.p.mashape.com/getPercentage?fname=John&sname=Alice');
+  xhttp.setRequestHeader('X-Mashape-Key','2xW4DcY7V3mshYasWjBGt81Fj0dJp13AK2Ljsnu9H4pjpVFM8J');
+  xhttp.send();
+});
+*/
+
+function scoresList() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);
+    }
+    else {
+      console.log(this.readyState, this.status);
+    }
+  };
+  xhttp.open('GET', '/scores', true);
+  xhttp.send();
+}
