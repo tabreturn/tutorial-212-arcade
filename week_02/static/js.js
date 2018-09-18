@@ -61,36 +61,53 @@ document.querySelector('#addscore a').addEventListener('click', function() {
     document.querySelector('#addscore .alert').innerHTML = 'RE-ENTER SCORE!';
   }
   else {
-    insertEntry(entry);
-    scoresList();
+    //insertEntry(entry);
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        insertEntry(entry);
+      }
+      else {
+        console.log(this.readyState, this.status);
+      }
+    };
+    req.open('POST', '/scores', true);
+    req.setRequestHeader('Content-type', 'application/json');
+    body = JSON.stringify(entry)
+    req.send(body);
   }
-
 });
 
 /*
 // api test
 
-document.querySelector('#addscore a').addEventListener('click', function() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    console.log(this.responseText);
-  };
-  xhttp.open('GET', 'https://love-calculator.p.mashape.com/getPercentage?fname=John&sname=Alice');
-  xhttp.setRequestHeader('X-Mashape-Key','2xW4DcY7V3mshYasWjBGt81Fj0dJp13AK2Ljsnu9H4pjpVFM8J');
-  xhttp.send();
-});
+var req = new XMLHttpRequest();
+req.onreadystatechange = function() {
+  console.log(this.responseText);
+};
+req.open('GET', 'https://love-calculator.p.mashape.com/getPercentage?fname=John&sname=Alice');
+req.setRequestHeader('X-Mashape-Key','2xW4DcY7V3mshYasWjBGt81Fj0dJp13AK2Ljsnu9H4pjpVFM8J');
+req.send();
 */
 
-function scoresList() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      console.log(this.responseText);
+// load scores
+
+var req = new XMLHttpRequest();
+req.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    json = JSON.parse(req.responseText)
+    
+    for (var i=0; i<json.length; i++) {
+      insertEntry([
+        json[i][1],
+        json[i][2],
+        json[i][3]
+      ]);
     }
-    else {
-      console.log(this.readyState, this.status);
-    }
-  };
-  xhttp.open('GET', '/scores', true);
-  xhttp.send();
-}
+  }
+  else {
+    console.log(this.readyState, this.status);
+  }
+};
+req.open('GET', '/scores', true);
+req.send();

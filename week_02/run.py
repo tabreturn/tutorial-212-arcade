@@ -1,23 +1,11 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 import sqlite3
 #from flask_cors import CORS
 
 app = Flask(__name__)
 #CORS(app)
 
-'''
-CREATE TABLE scores(
-  id INTEGER PRIMARY KEY,
-  name TEXT NOT NULL,
-  date TEXT NOT NULL,
-  score INTEGER NOT NULL
-);
-INSERT INTO scores(name,date,score) VALUES('TAB','1993-12-02',4546);
-INSERT INTO scores(name,date,score) VALUES('TAB','1993-12-02',946);
-INSERT INTO scores(name,date,score) VALUES('JOE','1993-01-08',813);
-'''
-
-MENUDB = 'scores.db'
+SCORESDB = 'scores.db'
 
 @app.route('/')
 def index():
@@ -27,17 +15,20 @@ def index():
 def scores_list():
     #return 'score'
     #return jsonify('score')
-
-    con = sqlite3.connect(MENUDB)
+    con = sqlite3.connect(SCORESDB)
     scores = []
     cur = con.execute('SELECT * FROM scores')
+
     for row in cur:
         scores.append(list(row))
     con.close()
-
     return jsonify(scores)
 
 @app.route('/scores', methods=['POST'])
 def scores_add():
-    #return 'score'
-    return jsonify('score')
+    entry = request.json
+    con = sqlite3.connect(SCORESDB)
+    cur = con.execute('INSERT INTO scores(name,date,score) VALUES(?,?,?)', entry)
+    con.commit()
+    con.close()
+    return 'success'
