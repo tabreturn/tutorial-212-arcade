@@ -12,7 +12,7 @@ var scores = [
  /* ['TAB','1991-03-03','12345'] */
 ];
 
-var topscore = 15000;
+var topscore = 13000;
 
 // insert entry
 
