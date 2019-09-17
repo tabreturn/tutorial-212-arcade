@@ -23,7 +23,7 @@ function insertEntry(entry) {
   document.getElementById('chart').innerHTML = '';
 
   for (var i=0; i < scores.length; i++) {
-    color = colors[i%colors.length];
+    var color = colors[i%colors.length];
 
     var bar = document.createElement('div');
     bar.className = 'bar';

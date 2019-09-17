@@ -23,7 +23,7 @@ function insertEntry(entry) {
   document.getElementById('chart').innerHTML = '';
 
   for (var i=0; i < scores.length; i++) {
-    color = colors[i%colors.length];
+    var color = colors[i%colors.length];
     /*
     var bar = document.createElement('div');
     bar.className = 'bar';
@@ -52,7 +52,7 @@ function insertEntry(entry) {
 // submit button
 
 document.querySelector('#addscore a').addEventListener('click', function() {
-  var entry = [
+   var entry = [
    document.getElementById('name').value,
    document.getElementById('date').value,
    document.getElementById('score').value
@@ -82,7 +82,7 @@ document.querySelector('#addscore a').addEventListener('click', function() {
     };
     req.open('POST', '/scores', true);
     req.setRequestHeader('Content-type', 'application/json');
-    body = JSON.stringify(entry)
+    var body = JSON.stringify(entry)
     req.send(body);
   }
 });
@@ -104,7 +104,7 @@ req.send();
 var req = new XMLHttpRequest();
 req.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
-    json = JSON.parse(req.responseText)
+    var json = JSON.parse(req.responseText)
 
     for (var i=0; i<json.length; i++) {
       insertEntry([
