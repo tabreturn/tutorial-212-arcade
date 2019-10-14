@@ -1,4 +1,4 @@
-# tutorial-212-arcade
+# 212 Arcade
 Web app tutorial files (HTML, CSS, JavaScript, Flask, SQLite)
 
 ![](screenshot.png)
