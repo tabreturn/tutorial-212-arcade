@@ -1,6 +1,6 @@
 // variables
 
-var colors = [
+let colors = [
   '#D00',
   '#DD0',
   '#0DD',
@@ -8,11 +8,11 @@ var colors = [
   '#D0D'
 ];
 
-var scores = [
+let scores = [
  /* ['TAB','1991-03-03','12345'] */
 ];
 
-var topscore = 13000;
+let topscore = 13000;
 
 // insert entry
 
@@ -22,16 +22,16 @@ function insertEntry(entry) {
   document.getElementById('highscores').innerHTML = '<tr><th>[NAME]</th><th>[DATE]</th><th>[SCORE]</th></tr>';
   document.getElementById('chart').innerHTML = '';
 
-  for (var i=0; i < scores.length; i++) {
-    var color = colors[i%colors.length];
+  for (let i=0; i < scores.length; i++) {
+    let color = colors[i%colors.length];
 
-    var bar = document.createElement('div');
+    let bar = document.createElement('div');
     bar.className = 'bar';
     bar.style.width = scores[i][2] / topscore * 100 + '%';
     bar.style.backgroundColor = color;
     document.getElementById('chart').appendChild(bar);
 
-    var row = document.createElement('tr');
+    let row = document.createElement('tr');
     row.style.color = color;
     row.innerHTML += '<td>' + scores[i][0] + '</td>';
     row.innerHTML += '<td>' + scores[i][1] + '</td>';
@@ -43,7 +43,7 @@ function insertEntry(entry) {
 // submit button
 
 document.querySelector('#addscore a').addEventListener('click', function() {
-  var entry = [
+  let entry = [
    document.getElementById('name').value,
    document.getElementById('date').value,
    document.getElementById('score').value

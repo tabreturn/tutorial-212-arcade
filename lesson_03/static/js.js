@@ -1,6 +1,6 @@
 // variables
 
-var colors = [
+let colors = [
   '#D00',
   '#DD0',
   '#0DD',
@@ -8,11 +8,11 @@ var colors = [
   '#D0D'
 ];
 
-var scores = [
+let scores = [
  /* ['TAB','1991-03-03','12345'] */
 ];
 
-var topscore = 13000;
+let topscore = 13000;
 
 // insert entry
 
@@ -22,16 +22,16 @@ function insertEntry(entry) {
   document.getElementById('highscores').innerHTML = '<tr><th>[NAME]</th><th>[DATE]</th><th>[SCORE]</th></tr>';
   document.getElementById('chart').innerHTML = '';
 
-  for (var i=0; i < scores.length; i++) {
-    var color = colors[i%colors.length];
+  for (let i=0; i < scores.length; i++) {
+    let color = colors[i%colors.length];
     /*
-    var bar = document.createElement('div');
+    let bar = document.createElement('div');
     bar.className = 'bar';
     bar.style.width = scores[i][2] / topscore * 100 + '%';
     bar.style.backgroundColor = color;
     document.getElementById('chart').appendChild(bar);
     */
-    var bar = document.createElementNS('http://www.w3.org/2000/svg','rect')
+    let bar = document.createElementNS('http://www.w3.org/2000/svg','rect')
     bar.setAttribute('fill', color);
     bar.setAttribute('width', scores[i][2] / topscore * 100 + '%');
     bar.setAttribute('height', 22);
@@ -40,7 +40,7 @@ function insertEntry(entry) {
     document.getElementById('chart').appendChild(bar);
     document.getElementById('chart').setAttribute('height', 22*(i+1));
 
-    var row = document.createElement('tr');
+    let row = document.createElement('tr');
     row.style.color = color;
     row.innerHTML += '<td>' + scores[i][0] + '</td>';
     row.innerHTML += '<td>' + scores[i][1] + '</td>';
@@ -52,7 +52,7 @@ function insertEntry(entry) {
 // submit button
 
 document.querySelector('#addscore a').addEventListener('click', function() {
-   var entry = [
+   let entry = [
    document.getElementById('name').value,
    document.getElementById('date').value,
    document.getElementById('score').value
@@ -71,7 +71,7 @@ document.querySelector('#addscore a').addEventListener('click', function() {
   }
   else {
     //insertEntry(entry);
-    var req = new XMLHttpRequest();
+    let req = new XMLHttpRequest();
     req.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         insertEntry(entry);
@@ -82,7 +82,7 @@ document.querySelector('#addscore a').addEventListener('click', function() {
     };
     req.open('POST', '/scores', true);
     req.setRequestHeader('Content-type', 'application/json');
-    var body = JSON.stringify(entry)
+    let body = JSON.stringify(entry)
     req.send(body);
   }
 });
@@ -90,7 +90,7 @@ document.querySelector('#addscore a').addEventListener('click', function() {
 /*
 // api test
 
-var req = new XMLHttpRequest();
+let req = new XMLHttpRequest();
 req.onreadystatechange = function() {
   console.log(this.responseText);
 };
@@ -101,12 +101,12 @@ req.send();
 
 // load scores
 
-var req = new XMLHttpRequest();
+let req = new XMLHttpRequest();
 req.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
-    var json = JSON.parse(req.responseText)
+    let json = JSON.parse(req.responseText)
 
-    for (var i=0; i<json.length; i++) {
+    for (let i=0; i<json.length; i++) {
       insertEntry([
         json[i][1],
         json[i][2],

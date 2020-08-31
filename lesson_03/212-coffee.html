@@ -104,7 +104,7 @@
         this.style.cursor = 'default';
       });
 
-      var sb = document.getElementById('startbutton');
+      let sb = document.getElementById('startbutton');
 
       function activateButton() {
         sb.setAttribute('fill','#0F0');
@@ -118,7 +118,7 @@
       function deactivateButton() {
         sb.setAttribute('fill','#F00');
         document.getElementById('cup').addEventListener('click', function addMilk(){
-          var milk = document.createElementNS('http://www.w3.org/2000/svg','line')
+          let milk = document.createElementNS('http://www.w3.org/2000/svg','line')
           milk.setAttribute('stroke', '#FFF');
           milk.setAttribute('stroke-opacity', '0.4');
           milk.setAttribute('stroke-width', '15');
