@@ -52,10 +52,10 @@ function insertEntry(entry) {
 // submit button
 
 document.querySelector('#addscore a').addEventListener('click', () => {
-   let entry = [
-   document.getElementById('name').value,
-   document.getElementById('date').value,
-   document.getElementById('score').value
+  let entry = [
+    document.getElementById('name').value,
+    document.getElementById('date').value,
+    document.getElementById('score').value
   ];
 
   document.querySelector('#addscore .alert').innerHTML = '';
