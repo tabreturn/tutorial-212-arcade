@@ -42,7 +42,7 @@ function insertEntry(entry) {
 
 // submit button
 
-document.querySelector('#addscore a').addEventListener('click', function() {
+document.querySelector('#addscore a').addEventListener('click', () => {
   let entry = [
    document.getElementById('name').value,
    document.getElementById('date').value,
@@ -63,7 +63,7 @@ document.querySelector('#addscore a').addEventListener('click', function() {
   else {
     //insertEntry(entry);
     let req = new XMLHttpRequest();
-    req.onreadystatechange = function() {
+    req.onreadystatechange = () => {
       if (this.readyState == 4 && this.status == 200) {
         insertEntry(entry);
       }
@@ -82,7 +82,7 @@ document.querySelector('#addscore a').addEventListener('click', function() {
 // api test
 
 let req = new XMLHttpRequest();
-req.onreadystatechange = function() {
+req.onreadystatechange = () => {
   console.log(this.responseText);
 };
 req.open('GET', 'https://love-calculator.p.mashape.com/getPercentage?fname=John&sname=Alice');
@@ -93,7 +93,7 @@ req.send();
 // load scores
 
 let req = new XMLHttpRequest();
-req.onreadystatechange = function() {
+req.onreadystatechange = () => {
   if (this.readyState == 4 && this.status == 200) {
     let json = JSON.parse(req.responseText)
 
