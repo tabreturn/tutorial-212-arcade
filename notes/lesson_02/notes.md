@@ -24,7 +24,7 @@ https://www.getpostman.com/
 
 Let's begin by creating a new Flask route that caters for a GET request:
 
-~~~
+~~~py
 @app.route('/scores', methods=['GET'])
 def scores_list():
     return 'score'
