@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=VT323');
+
+* {
+  margin: 0;
+  padding: 0;
+  /*outline: yellow 1px solid;*/
+}
+
+body {
+  background-color: #151515;
+  background-image: url('logo.gif');
+  background-position: 23px 22px;
+  background-repeat: no-repeat;
+  background-size: 442px 220px;
+  color: #DDD;
+  font-family: 'VT323', monospace;
+  font-size: 27px;
+  line-height: 31px;
+  padding: 23px;
+  padding-top: 265px;
+}
+
+::selection {
+  background-color: #0D0;
+}
+::-moz-selection {
+  background-color: #0D0;
+}
+
+#scanlines {
+  background-image: url('scanline.svg');
+  background-size: 4px;
+  height: 100%;
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+#container {
+  max-width: 600px;
+  min-width: 300px;
+}
+
+h1 {
+  color: #0DD;
+  font-size: inherit;
+  font-weight: normal;
+  padding: 17px 0;
+}
+
+#chart {
+  padding-bottom: 22px;
+}
+
+#chart .bar {
+  height: 22px;
+}
+
+#highscores {
+  border-collapse: collapse;
+  margin: -2px 0;
+  width: 100%;
+}
+
+#highscores tr td,
+#highscores tr th {
+  font-weight: normal;
+  text-align: left;
+  width: 30%;
+}
+
+#highscores tr td:first-child {
+  text-align: left;
+  width: 40%;
+}
+
+#highscores tr td:last-child,
+#highscores tr th:last-child {
+  text-align: right;
+}
+
+#addscore input {
+  background-color: transparent;
+  border: none;
+  color: #DDD;
+  font-family: 'VT323', monospace;
+  font-size: inherit;
+  width: 162px
+}
+
+#addscore {
+  margin-top: -14px;
+}
+
+#addscore a {
+  border: none;
+  color: #0D0;
+  cursor: pointer;
+  display: inline-block;
+  padding-top: 5px;
+}
+
+#addscore .alert {
+  animation: blink 1s step-start 0s infinite;
+  color: #D00;
+}
+
+@keyframes blink {
+  50% { opacity: 0.0 }
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-position: -46px 17px;
+  }
+}

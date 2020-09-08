@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+    <meta charset="utf-8" />
+    <title>212 Coffee</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+
+    <style>
+      html, body {
+        align-items: center;
+        background-color: #888;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+      }
+      svg {
+        outline: 1px dashed #666;
+      }
+
+      svg .stroked {
+        stroke: #000;
+        stroke-width: 15;
+      }
+      #portafilter, #startbutton, #cup {
+        cursor: pointer;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <!-- https://developer.mozilla.org/en-US/docs/Web/SVG -->
+    <svg width="800" height="395">
+      <rect x="260" y="115" width="280" height="200" fill="maroon" class="stroked" />
+
+      <linearGradient id="steel">
+        <stop offset="0%"   style="stop-color:#666" />
+        <stop offset="50%"  style="stop-color:#FFF" />
+        <stop offset="65%"  style="stop-color:#888" />
+        <stop offset="100%" style="stop-color:#FFF" />
+      </linearGradient>
+      <rect x="250" y="35"  rx="5" ry="5" width="300" height="80" class="stroked" fill="url(#steel)" />
+      <rect x="250" y="315" rx="5" ry="5" width="300" height="45" class="stroked" fill="url(#steel)" />
+
+      <ellipse cx="290" cy="75" rx="15" ry="15" id="startbutton"  class="stroked" fill="#F00" />
+      <rect x="350" y="115" rx="5" ry="5" width="100" height="45" class="stroked" fill="url(#steel)" />
+
+      <!-- https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths -->
+      <path
+        stroke-linejoin="round"
+        class="stroked"
+        fill="#0EE" fill-opacity="0.4"
+        id="cup"
+        d="M335 230
+           L465 230
+           C465 230, 465 310, 400 310
+           C335 310, 335 230, 335 230
+           Z"
+      />
+      <g class="stroked" id="portafilter">
+        <line x1="50" y1="160" x2="200" y2="160" stroke-linecap="round" />
+        <polygon
+          stroke-linejoin="round"
+          fill="url(#steel)"
+          points="120,160
+                  130,205
+                  190,205
+                  200,160"
+        />
+      </g>
+
+      <path
+        clip-path="url(#cupmask)"
+        class="stroked"
+        fill="#421"
+        d="M335 230
+           L465 230
+           C465 230, 465 310, 400 310
+           C335 310, 335 230, 335 230
+           Z"
+      />
+      <defs>
+        <clipPath id="cupmask">
+          <rect id="cuplevel" x="325" y="310" width="150" height="60" fill="#F00" />
+        </clipPath>
+      </defs>
+
+    </svg>
+
+    <script>
+      // https://greensock.com/docs/TweenMax
+      //document.querySelector('#portafilter polygon').setAttribute('fill','#F00');
+      //TweenLite.to('#portafilter', 2, {x:240});
+
+      document.getElementById('portafilter').addEventListener('click', function dockPortafilter() {
+        TweenMax.to('#portafilter', 1, {x:240, onComplete:activateButton});
+        this.removeEventListener('click', dockPortafilter);
+        this.style.cursor = 'default';
+      });
+
+      let sb = document.getElementById('startbutton');
+
+      function activateButton() {
+        sb.setAttribute('fill','#0F0');
+        sb.addEventListener('click', function greenStartButton() {
+          TweenMax.to('#cuplevel', 2, {y:-60, onComplete:deactivateButton});
+          this.removeEventListener('click', greenStartButton);
+          this.style.cursor = 'default';
+        });
+      }
+
+      function deactivateButton() {
+        sb.setAttribute('fill','#F00');
+        document.getElementById('cup').addEventListener('click', function addMilk() {
+          let milk = document.createElementNS('http://www.w3.org/2000/svg','line')
+          milk.setAttribute('stroke', '#FFF');
+          milk.setAttribute('stroke-opacity', '0.4');
+          milk.setAttribute('stroke-width', '15');
+          milk.setAttribute('stroke-linecap', 'round');
+          milk.setAttribute('x1', 353);
+          milk.setAttribute('y1', 250);
+          milk.setAttribute('x2', 447);
+          milk.setAttribute('y2', 250);
+          document.querySelector('svg').appendChild(milk);
+          this.removeEventListener('click', addMilk);
+          this.style.cursor = 'default';
+        });
+      }
+
+      // * students to add stream of coffee
+      // * students to click on coffee to restart process
+    </script>
+
+  </body>
+
+</html>
