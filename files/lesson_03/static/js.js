@@ -74,53 +74,29 @@ document.querySelector('#addscore a').addEventListener('click', () => {
     document.querySelector('#addscore .alert').innerHTML = 'RE-ENTER SCORE!';
   }
   else {
-    //insertEntry(entry);
-    let req = new XMLHttpRequest();
-    req.onreadystatechange = () => {
-      if (this.readyState == 4 && this.status == 200) {
-        insertEntry(entry);
-      }
-      else {
-        console.log(this.readyState, this.status);
-      }
-    };
-    req.open('POST', '/scores', true);
-    req.setRequestHeader('Content-type', 'application/json');
-    let body = JSON.stringify(entry)
-    req.send(body);
+    fetch('/scores', {
+      method: 'POST',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify(entry)
+    })
+    .then(response => response.json())
+    .then(data => {
+      insertEntry(entry)
+    });
   }
 });
 
-/*
-// api test
-
-let req = new XMLHttpRequest();
-req.onreadystatechange = () => {
-  console.log(this.responseText);
-};
-req.open('GET', 'https://love-calculator.p.mashape.com/getPercentage?fname=John&sname=Alice');
-req.setRequestHeader('X-Mashape-Key','2xW4DcY7V3mshYasWjBGt81Fj0dJp13AK2Ljsnu9H4pjpVFM8J');
-req.send();
-*/
-
 // load scores
 
-let req = new XMLHttpRequest();
-req.onreadystatechange = () => {
-  if (this.readyState == 4 && this.status == 200) {
-    let json = JSON.parse(req.responseText)
-
-    for (let i=0; i<json.length; i++) {
+fetch('/scores', { method: 'GET' })
+  .then(response => response.json())
+  .then(data => {
+    for (let i=0; i<data.length; i++) {
       insertEntry([
-        json[i][1],
-        json[i][2],
-        json[i][3]
+        data[i][1],
+        data[i][2],
+        data[i][3]
       ]);
     }
-  }
-  else {
-    console.log(this.readyState, this.status);
-  }
-};
-req.open('GET', '/scores', true);
-req.send();
+  });
+
