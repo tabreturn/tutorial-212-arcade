@@ -21,7 +21,7 @@ Create a new directory (and repo?) named "212-arcade". Setup a new Python virtua
 
 We'll begin with a simple *run.py* file with the following code:
 
-```python
+```py
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -380,7 +380,7 @@ However, we'd like alternating colours (not all red). Add a new `color` variable
 ...
 for (let i=0; i < scores.length; i++) {
   let color = colors[i%colors.length];
-  
+
   ...
   bar.style.backgroundColor = color;
   ...
@@ -474,7 +474,7 @@ And, turn your existing entry code into a corresponding function:
 
 function insertEntry(entry) {
   scores.push(entry);
-  
+
   document.getElementById('highscores')...
     ...
     document.getElementById('highscores').appendChild(row);
