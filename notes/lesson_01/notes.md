@@ -1,7 +1,3 @@
-*289.212.07.workshop*
-
-<!-- markdown-pdf -s md.css -h md.js notes.md -m '{"html":true}' -->
-
 JavaScript
 ==========
 

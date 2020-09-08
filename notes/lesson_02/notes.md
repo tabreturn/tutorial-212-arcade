@@ -1,7 +1,3 @@
-*289.212.08.workshop*
-
-<!-- markdown-pdf -s md.css -h md.js notes.md -m '{"html":true}' -->
-
 Building a RESTful API
 ======================
 
