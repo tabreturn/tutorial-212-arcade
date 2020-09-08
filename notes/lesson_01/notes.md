@@ -65,7 +65,7 @@ Add the following code:
 </html>
 ```
 
-Download the [assets](../../assets). Move those files into your working project directory:
+Download the [assets](../../assets/static). Move those files into your working project directory, into a directory named *static*:
 
 ```
 212-arcade
