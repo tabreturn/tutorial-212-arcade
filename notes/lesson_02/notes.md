@@ -24,11 +24,11 @@ https://www.getpostman.com/
 
 Let's begin by creating a new Flask route that caters for a GET request:
 
-~~~py
+```py
 @app.route('/scores', methods=['GET'])
 def scores_list():
     return 'score'
-~~~
+```
 
 Run your Flask server. Then open Postman and:
 
@@ -43,14 +43,14 @@ Yay! You've got your API responding!
 
 However, we'd like to work with JSON (as opposed to plain-text), so add `jsonify` to your import line, and wrap your data (just 'score' for now) with a `jsonify()` function:
 
-~~~
+```
 from flask import Flask, render_template, jsonify
 ...
 
 @app.route('/scores', methods=['GET'])
 def scores_list():
     return jsonify('score')
-~~~
+```
 
 Save. Click *send* again in Postman. Now your response is wrapped in quotes.
 
@@ -65,32 +65,32 @@ Before we begin adding API features to store data, we require a database to stor
 
 Begin by importing `sqlite3` and defining a file name for your database:
 
-~~~
+```
 from flask import Flask, render_template, jsonify
 
 import sqlite3
 SCORESDB = 'scores.db'
 ...
-~~~
+```
 
 Now set up a new SQLite database -- using the terminal command `sqlite3 scores.db` -- and define a table for your high scores:
 
-~~~
+```
 CREATE TABLE scores(
   id INTEGER PRIMARY KEY,
   name TEXT NOT NULL,
   date TEXT NOT NULL,
   score INTEGER NOT NULL
 );
-~~~
+```
 
 Add some entries:
 
-~~~
+```
 INSERT INTO scores(name,date,score) VALUES('TAB','1993-12-02',4546);
 INSERT INTO scores(name,date,score) VALUES('TAB','1993-12-02',946);
 INSERT INTO scores(name,date,score) VALUES('JOE','1993-01-08',813);
-~~~
+```
 
 We now need Flask to retrieve the scores when the API receives a request for them.
 
@@ -99,7 +99,7 @@ Retrieving Values from the Database
 
 Update your `scores_list()` function to connect to- and query the database:
 
-~~~
+```
 @app.route('/scores', methods=['GET'])
 def scores_list():
     #return jsonify('score')
@@ -111,7 +111,7 @@ def scores_list():
         scores.append(list(row))
     con.close()
     return jsonify(scores)
-~~~
+```
 
 Now check your Postman output. With richer data, the response looks a lot more like a typical JSON file:
 
@@ -121,7 +121,7 @@ We are now able to retrieve data from our database using Postman. Let's do this 
 
 Open your *js.js* file and add the following code:
 
-~~~
+```
 // load scores
 
 let req = new XMLHttpRequest();
@@ -137,7 +137,7 @@ req.onreadystatechange = () => {
 };
 req.open('GET', '/scores', true);
 req.send();
-~~~
+```
 
 This code creates a new XMLHttpRequest, assigned to variable `req`. The `req.onreadystatechange` does not run immediately -- only when one calls the `req.open()` or `req.send()`. These two functions return the following `readyState` codes:
 
@@ -169,7 +169,7 @@ The `let json = JSON.parse(req.responseText)` converts the JSON data to a JavaSc
 
 Now, use this data to populate your high scores:
 
-~~~
+```
     ...
     console.log(json)
 
@@ -181,7 +181,7 @@ Now, use this data to populate your high scores:
       ]);
     ...
 }
-~~~
+```
 
 Save and reload your browser. The page now displays the entries from your database:
 
@@ -199,7 +199,7 @@ https://jsonplaceholder.typicode.com/
 
 Import the Flask `request` module, and add a new route to your *run.py*:
 
-~~~
+```
 from flask import Flask, render_template, jsonify, request
 
 ...
@@ -212,13 +212,13 @@ def scores_add():
     con.commit()
     con.close()
     return 'success'
-~~~
+```
 
 The `request.json` will parse the JSON data Flask has received.
 
 In your *js.js* file, modify your submit button code:
 
-~~~
+```
 ...
 
 document.querySelector('#addscore a').addEventListener('click', () => {
@@ -241,7 +241,7 @@ document.querySelector('#addscore a').addEventListener('click', () => {
 });
 
 ...
-~~~
+```
 
 This code is similar enough to your GET request. However, the `req.open()` method argument is set to `POST`. The `JSON.stringify()` method converts a JavaScript object or value to a JSON-formatted string.
 

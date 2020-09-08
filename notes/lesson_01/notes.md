@@ -21,7 +21,7 @@ Create a new directory (and repo?) named "212-arcade". Setup a new Python virtua
 
 We'll begin with a simple *run.py* file with the following code:
 
-~~~python
+```python
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -29,23 +29,23 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return render_template('index.html')
-~~~
+```
 
 From this code, you can tell that you require a template file named *index.html*. Create your template directory, and within it, the index file:
 
-~~~
+```
 212-arcade
 │  run.py
 │
 └──templates
    │  index.html
 
-~~~
+```
 
 Add the following code:
 
 *index.html*
-~~~html
+```html
 <!DOCTYPE html>
 
 <html>
@@ -67,11 +67,11 @@ Add the following code:
   </body>
 
 </html>
-~~~
+```
 
 Download the lesson files (*289.212.07.files.zip*) from Stream. Within this archive you'll find the "static" contents for your project; move this into your working project directory:
 
-~~~
+```
 212-arcade
 │  run.py
 │
@@ -82,7 +82,7 @@ Download the lesson files (*289.212.07.files.zip*) from Stream. Within this arch
    |  scanline.svg
    |  screen.css
 
-~~~
+```
 
 Run your Flask app. Check the results in your browser, which should look like this:
 
@@ -109,7 +109,7 @@ The `console.log()` is useful for debugging. It displays output to the developer
 
 Add a new pair of script tags, just before your closing `</body>` tag. Within these, add a `console.log()`:
 
-~~~html
+```html
     ...
     <script>
       console.log('Hello World');
@@ -118,7 +118,7 @@ Add a new pair of script tags, just before your closing `</body>` tag. Within th
   </body>
 
 </html>
-~~~
+```
 
 Save and reload your browser:
 
@@ -137,7 +137,7 @@ Here's an example of an `if` statement and a `for` loop. There's no need to add 
 
 ### If/Else-If/Else Statements
 
-~~~js
+```js
     ...
     <script>
       let mark = 65;
@@ -162,11 +162,11 @@ Here's an example of an `if` statement and a `for` loop. There's no need to add 
   </body>
 
 </html>
-~~~
+```
 
 ### For Loops
 
-~~~js
+```js
     ...
     <script>
     for (let i=1; i<=21; i++) {
@@ -177,26 +177,26 @@ Here's an example of an `if` statement and a `for` loop. There's no need to add 
   </body>
 
 </html>
-~~~
+```
 
 External JavaScript
 -------------------
 
 Just like CSS, JavaScript can be placed in an external file. Because we're running a Flask website, we'll link this like any other static resource:
 
-~~~html
+```html
     ...
     <script src="{{ url_for('static', filename='js.js') }}"></script>
   </body>
 
 </html>
-~~~
+```
 
 Note that the JavaScript -- or link to it -- is placed just before the closing `body` tag. JavaScript cannot address anything that has not been loaded yet (in the HTML above it).
 
 Create a new JavaScript file named "js.js" and save it in your static directory:
 
-~~~
+```
 212-arcade
 │  run.py
 │
@@ -208,7 +208,7 @@ Create a new JavaScript file named "js.js" and save it in your static directory:
    |  screen.css
    |  js.js
 
-~~~
+```
 
 For now, leave the JavaScript file empty. We'll add some more HTML, then some JavaScript to control it.
 
@@ -220,7 +220,7 @@ Once you can address elements with JavaScript, you can manipulate them as you pl
 To begin add some more HTML:
 
 *index.html*
-~~~html
+```html
   ...
 
   <div id="container">
@@ -245,7 +245,7 @@ To begin add some more HTML:
     </table>
 
     ...
-~~~
+```
 
 You've added a single high score entry in HTML:
 
@@ -254,10 +254,10 @@ You've added a single high score entry in HTML:
 Let's remove this using JavaScript. Use the `document.getElementById()` to select the elements you want, and the `innerHTML` attribute to set the HTML within those to nothing:
 
 *js.js*
-~~~js
+```js
 document.getElementById('highscores').innerHTML = '';
 document.getElementById('chart').innerHTML = '';
-~~~
+```
 
 The result is an empty high scores table:
 
@@ -266,7 +266,7 @@ The result is an empty high scores table:
 Now, we'll add bars and scores using JavaScript:
 
 *js.js*
-~~~js
+```js
 document.getElementById('highscores').innerHTML = '<tr><th>[NAME]</th><th>[DATE]</th><th>[SCORE]</th></tr>';
 document.getElementById('chart').innerHTML = '';
 
@@ -284,7 +284,7 @@ row.innerHTML += '<td>TAB</td>';
 row.innerHTML += '<td>1991-03-03</td>';
 row.innerHTML += '<td>12345</td>';
 document.getElementById('highscores').appendChild(row);
-~~~
+```
 
 So, we're back to what we had before, but this is all JavaScript-controlled now:
 
@@ -293,7 +293,7 @@ So, we're back to what we had before, but this is all JavaScript-controlled now:
 You can comment out your chart and table code to confirm this:
 
 *index.html*
-~~~html
+```html
     ...
 
     <div id="chart">
@@ -318,7 +318,7 @@ You can comment out your chart and table code to confirm this:
     </table>
 
     ...
-~~~
+```
 
 Storing the Scores in an Array
 ------------------------------
@@ -328,7 +328,7 @@ JavaScript arrays, like Python lists, use square bracket notation. We'll use a 2
 Add these variables to the top of your JavaScript file:
 
 *js.js*
-~~~js
+```js
 // variables
 
 let colors = [
@@ -346,12 +346,12 @@ let scores = [
 ];
 
 let topscore = 13000;
-~~~
+```
 
 Use a `for` loop to display all of the `scores`:
 
 *js.js*
-~~~js
+```js
 ...
 for (let i=0; i < scores.length; i++) {
   let bar = document.createElement('div');
@@ -367,7 +367,7 @@ for (let i=0; i < scores.length; i++) {
   row.innerHTML += '<td>' + scores[i][2] + '</td>';
   document.getElementById('highscores').appendChild(row);
 }
-~~~
+```
 
 The result is three scores, with red bars:
 
@@ -376,7 +376,7 @@ The result is three scores, with red bars:
 However, we'd like alternating colours (not all red). Add a new `color` variable that uses a modulo operator, and change two other lines in the `for` loop to use this value:
 
 *js.js*
-~~~js
+```js
 ...
 for (let i=0; i < scores.length; i++) {
   let color = colors[i%colors.length];
@@ -386,7 +386,7 @@ for (let i=0; i < scores.length; i++) {
   ...
   row.style.color = color;
   ...
-~~~
+```
 
 Save, and refresh your browser. You should see multi-coloured bands and scores.
 
@@ -402,7 +402,7 @@ Rather than send our form input to a backend, we'll have JavaScript handle it.
 Add a form to your HTML:
 
 *index.html*
-~~~html
+```html
       ...
     </table>
 
@@ -419,14 +419,14 @@ Add a form to your HTML:
     </form>
 
     ...
-~~~
+```
 
 ![](08-add_html_form.png)
 
 Now add some JavaScript that listens for when the user clicks the submit button:
 
 *js.js*
-~~~js
+```js
 ...
 
 // submit button
@@ -440,13 +440,13 @@ document.querySelector('#addscore a').addEventListener('click', () => {
 
   console.log(entry);
 });
-~~~
+```
 
 ![](09-form_log.png)
 
 Great! We've got access to user values in JavaScript. Empty your `scores` array:
 
-~~~js
+```js
 let scores = [
   /*
   ['TAB','1991-03-03','12345'],
@@ -454,22 +454,22 @@ let scores = [
   ['JEM','1991-01-01','1000']
   */
 ];
-~~~
+```
 
 Call an `insertEntry()` function:
 
-~~~js
+```js
   ...
 
   console.log(entry);
   insertEntry(entry);
 });
-~~~
+```
 
 And, turn your existing entry code into a corresponding function:
 
 *js.js*
-~~~js
+```js
 // insert entry
 
 function insertEntry(entry) {
@@ -480,7 +480,7 @@ function insertEntry(entry) {
     document.getElementById('highscores').appendChild(row);
   }
 }
-~~~
+```
 
 You can now add entries using the form:
 
@@ -488,7 +488,7 @@ You can now add entries using the form:
 
 Finally, add some validation logic. The complete submit button code looks like this:
 
-~~~js
+```js
 // submit button
 
 document.querySelector('#addscore a').addEventListener('click', () => {
@@ -513,7 +513,7 @@ document.querySelector('#addscore a').addEventListener('click', () => {
     insertEntry(entry);
   }
 });
-~~~
+```
 
 Each time you refresh the web page, you lose the scores you've accumulated. In the next lesson we'll look at storing these in an SQLite database.
 

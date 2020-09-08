@@ -27,7 +27,7 @@ Setup an HTML Document
 
 This initial structure will include a link to a GSAP CDN-hosted file. To keep things simple, we'll use an internal stylesheet and internal JavaScript:
 
-~~~
+```
 <!DOCTYPE html>
 
 <html>
@@ -51,7 +51,7 @@ This initial structure will include a link to a GSAP CDN-hosted file. To keep th
   </body>
 
 </html>
-~~~
+```
 
 We'll recreate the following graphic using SVG markup:
 
@@ -62,7 +62,7 @@ SVG
 
 To begin creating shapes, add an `svg` tag; this will serve as your 'drawing space'. Use `width` and `height` attributes to define the size:
 
-~~~
+```
   ...
 
   <body>
@@ -73,11 +73,11 @@ To begin creating shapes, add an `svg` tag; this will serve as your 'drawing spa
 
     <script>
     ...
-~~~
+```
 
 Add some CSS to style the background and outline the SVG element:
 
-~~~
+```
     ...
 
     <style>
@@ -92,7 +92,7 @@ Add some CSS to style the background and outline the SVG element:
         outline: 1px dashed #666;
       }
     ...
-~~~
+```
 
 ![](01-start.png)
 
@@ -102,17 +102,17 @@ We are now ready to add some shapes.
 
 Use the `<rect>` tag to draw a rectangle:
 
-~~~
+```
     <svg width="800" height="395">
 
       <rect x="260" y="115" width="280" height="200" fill="maroon" class="stroked" />
 
     </svg>
-~~~
+```
 
 The attributes (`x`, `y`, `width`, `height`, `fill`) should be self-explanatory. The `class` attribute is for applying some CSS styling. Add this corresponding rule to your internal stylesheet:
 
-~~~
+```
       ...
 
       svg .stroked {
@@ -120,7 +120,7 @@ The attributes (`x`, `y`, `width`, `height`, `fill`) should be self-explanatory.
         stroke-width: 15;
       }
     </style>
-~~~
+```
 
 ![](02-rect.png)
 
@@ -133,7 +133,7 @@ You can apply gradient fills using the `linearGradient` tag. This is a two-step 
 1. you define the colour-stops using `stop` tags;
 2. then reference the gradient by its `id` attribute. In this case, the `linearGradient` has an `id="steel"`, which you can apply to any shape using a `fill="url(#steel)"` attribute:
 
-~~~
+```
       ...
 
       <linearGradient id="steel">
@@ -146,7 +146,7 @@ You can apply gradient fills using the `linearGradient` tag. This is a two-step 
       <rect x="250" y="315" rx="5" ry="5" width="300" height="45" class="stroked" fill="url(#steel)" />
       <rect x="350" y="115" rx="5" ry="5" width="100" height="45" class="stroked" fill="url(#steel)" />
     </svg>
-~~~
+```
 
 ![](03-rects.png)
 
@@ -154,12 +154,12 @@ You can apply gradient fills using the `linearGradient` tag. This is a two-step 
 
 Add an ellipse just above your final rectangle:
 
-~~~
+```
       ...
       <ellipse cx="290" cy="75" rx="15" ry="15" id="startbutton"  class="stroked" fill="#F00" />
       <rect x="350" y="115" rx="5" ry="5" width="100" height="45" class="stroked" fill="url(#steel)" />
     </svg>
-~~~
+```
 
 ![](04-ellipse.png)
 
@@ -169,7 +169,7 @@ Think of this as your SVG pen/bezier tool.
 
 Add a new path element:
 
-~~~
+```
       ...
       <path
         stroke-linejoin="round"
@@ -183,7 +183,7 @@ Add a new path element:
            Z"
       />
     </svg>
-~~~
+```
 
 The result is a cup shape:
 
@@ -211,7 +211,7 @@ The group tag (`<g>`) groups elements. This makes for a convenient way to manipu
 
 Add the *portafilter* (handle thing with the coffee grounds in it), comprised of a `line` and polygon `element`:
 
-~~~
+```
       ...
       <g class="stroked" id="portafilter">
         <line x1="50" y1="160" x2="200" y2="160" stroke-linecap="round" />
@@ -225,7 +225,7 @@ Add the *portafilter* (handle thing with the coffee grounds in it), comprised of
         />
       </g>
     </svg>
-~~~
+```
 
 ![](06-group.png)
 
@@ -240,7 +240,7 @@ A clipping path provides a way to cut one shape out of another shape. We'll cons
 
 Firstly, let's 'fill' the mug with coffee by creating another (brown) mug-shaped path:
 
-~~~
+```
       ...
       <path
         clip-path="url(#cupmask)"
@@ -253,7 +253,7 @@ Firstly, let's 'fill' the mug with coffee by creating another (brown) mug-shaped
            Z"
       />
     </svg>
-~~~
+```
 
 Note the `clip-path="url(#cupmask)"` -- this will apply the relevant clipping mask (we have yet to define).
 
@@ -261,17 +261,17 @@ Note the `clip-path="url(#cupmask)"` -- this will apply the relevant clipping ma
 
 Now, add a rectangle:
 
-~~~
+```
       ...
       <rect id="cuplevel" x="325" y="250" width="150" height="60" fill="#F00" />
     </svg>
-~~~
+```
 
 ![](08-clip_rect.png)
 
 Okay, so it looks a bit odd. However, the bright red rectangle will serve as the clipping path -- in other words, wherever it overlaps the brown shape, the brown will show through. Now convert this `rect` to an actual clipping path:
 
-~~~
+```
       ...
       <defs>
         <clipPath id="cupmask">
@@ -279,7 +279,7 @@ Okay, so it looks a bit odd. However, the bright red rectangle will serve as the
         </clipPath>
       </defs>
     </svg>
-~~~
+```
 
 Note the `id="cupmask"` (referenced in the clipped/brown shape).
 
@@ -304,24 +304,24 @@ https://greensock.com/docs/TweenMax
 
 To begin, add some CSS to change the cursor to a pointer whenever it hovers over some (soon-to-be) clickable element:
 
-~~~
+```
       ...
 
       #portafilter, #startbutton, #cup {
         cursor: pointer;
       }
     </style>
-~~~
+```
 
 You have the GSAP library linked in the `head` of your HTML, and an empty pair of `script` tags (just before the closing `</body>` tag) for adding your JavaScript code. Let's begin with an event listener -- which works exactly the same way as it would with HTML:
 
-~~~
+```
     <script>
       document.getElementById('portafilter').addEventListener('click', function dockPortafilter() {
         alert('clicked');
       });
     </script>
-~~~
+```
 
 Clicking the portafilter prompts an alert that reads 'clicked'.
 
@@ -329,7 +329,7 @@ SVG is part of the DOM, so JavaScript does pretty much all the same things in SV
 
 Replace the `alert` with some tween code:
 
-~~~
+```
     <script>
       document.getElementById('portafilter').addEventListener('click', function dockPortafilter() {
         TweenMax.to('#portafilter', 1, {x:240});
@@ -337,7 +337,7 @@ Replace the `alert` with some tween code:
         this.style.cursor = 'default';
       });
     </script>
-~~~
+```
 
 Now, clicking the portafilter moves it into position above the mug, performing a smooth tween in the process. The `TweenMax.to('#portafilter', 1, {x:240})` tweens the `'#portafilter'` from its current location to a new x-coordinate of `240`, taking `1` second to complete the motion.
 
@@ -345,15 +345,15 @@ Now, clicking the portafilter moves it into position above the mug, performing a
 
 Once this motion is complete, we can press the red button. To add the event listener for the red button after the tween is complete, we will use a *callback* function. Add this as an additional parameter to your existing `TweenMax.to`:
 
-~~~
+```
         ...
         TweenMax.to('#portafilter', 1, {x:240, onComplete:activateButton});
         ...
-~~~
+```
 
 This specifies that once the tween is finished, JavaScript must call a function named `activateButton`. Add this function to your script, and set the `y` attribute of the coffee in the mug to `310` (to have it start empty):
 
-~~~
+```
         ...
           <rect id="cuplevel" x="325" y="310" width="150" height="60" fill="#F00" />
         ...
@@ -370,7 +370,7 @@ This specifies that once the tween is finished, JavaScript must call a function 
         });
       }
     </script>
-~~~
+```
 
 The `activateButton()` function sets the button to green and adds a new event listener to it. Pressing this button (only possible once it turns green) will fill the mug:
 
@@ -378,15 +378,15 @@ The `activateButton()` function sets the button to green and adds a new event li
 
 Next, add another callback:
 
-~~~
+```
         ...
           TweenMax.to('#cuplevel', 2, {y:-60, onComplete:deactivateButton});
           ...
-~~~
+```
 
 And a corresponding function to add some frothy milk to the mug:
 
-~~~
+```
       function deactivateButton() {
         sb.setAttribute('fill','#F00');
         document.getElementById('cup').addEventListener('click', function addMilk() {
@@ -405,7 +405,7 @@ And a corresponding function to add some frothy milk to the mug:
         });
       }
     </script>
-~~~
+```
 
 Save, refresh your browser, and run through the click-sequence again; finally, click on the mug to add the milk.
 
