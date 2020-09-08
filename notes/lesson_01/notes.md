@@ -137,7 +137,7 @@ Here's an example of an `if` statement and a `for` loop. There's no need to add 
 
 ### If/Else-If/Else Statements
 
-~~~js
+~~~javascript
     ...
     <script>
       let mark = 65;
