@@ -65,7 +65,7 @@ Add the following code:
 </html>
 ```
 
-Download the lesson files (*289.212.07.files.zip*) from Stream. Within this archive you'll find the "static" contents for your project; move this into your working project directory:
+Download the [assets](../../assets). Move those files into your working project directory:
 
 ```
 212-arcade
