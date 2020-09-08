@@ -137,7 +137,7 @@ Here's an example of an `if` statement and a `for` loop. There's no need to add 
 
 ### If/Else-If/Else Statements
 
-~~~javascript
+~~~js
     ...
     <script>
       let mark = 65;
@@ -166,7 +166,7 @@ Here's an example of an `if` statement and a `for` loop. There's no need to add 
 
 ### For Loops
 
-~~~
+~~~js
     ...
     <script>
     for (let i=1; i<=21; i++) {
@@ -184,7 +184,7 @@ External JavaScript
 
 Just like CSS, JavaScript can be placed in an external file. Because we're running a Flask website, we'll link this like any other static resource:
 
-~~~
+~~~html
     ...
     <script src="{{ url_for('static', filename='js.js') }}"></script>
   </body>
@@ -220,7 +220,7 @@ Once you can address elements with JavaScript, you can manipulate them as you pl
 To begin add some more HTML:
 
 *index.html*
-~~~
+~~~html
   ...
 
   <div id="container">
@@ -254,7 +254,7 @@ You've added a single high score entry in HTML:
 Let's remove this using JavaScript. Use the `document.getElementById()` to select the elements you want, and the `innerHTML` attribute to set the HTML within those to nothing:
 
 *js.js*
-~~~
+~~~js
 document.getElementById('highscores').innerHTML = '';
 document.getElementById('chart').innerHTML = '';
 ~~~
@@ -266,7 +266,7 @@ The result is an empty high scores table:
 Now, we'll add bars and scores using JavaScript:
 
 *js.js*
-~~~
+~~~js
 document.getElementById('highscores').innerHTML = '<tr><th>[NAME]</th><th>[DATE]</th><th>[SCORE]</th></tr>';
 document.getElementById('chart').innerHTML = '';
 
@@ -293,7 +293,7 @@ So, we're back to what we had before, but this is all JavaScript-controlled now:
 You can comment out your chart and table code to confirm this:
 
 *index.html*
-~~~
+~~~html
     ...
 
     <div id="chart">
@@ -328,7 +328,7 @@ JavaScript arrays, like Python lists, use square bracket notation. We'll use a 2
 Add these variables to the top of your JavaScript file:
 
 *js.js*
-~~~
+~~~js
 // variables
 
 let colors = [
@@ -351,7 +351,7 @@ let topscore = 13000;
 Use a `for` loop to display all of the `scores`:
 
 *js.js*
-~~~
+~~~js
 ...
 for (let i=0; i < scores.length; i++) {
   let bar = document.createElement('div');
@@ -376,7 +376,7 @@ The result is three scores, with red bars:
 However, we'd like alternating colours (not all red). Add a new `color` variable that uses a modulo operator, and change two other lines in the `for` loop to use this value:
 
 *js.js*
-~~~
+~~~js
 ...
 for (let i=0; i < scores.length; i++) {
   let color = colors[i%colors.length];
@@ -402,7 +402,7 @@ Rather than send our form input to a backend, we'll have JavaScript handle it.
 Add a form to your HTML:
 
 *index.html*
-~~~
+~~~html
       ...
     </table>
 
@@ -426,7 +426,7 @@ Add a form to your HTML:
 Now add some JavaScript that listens for when the user clicks the submit button:
 
 *js.js*
-~~~
+~~~js
 ...
 
 // submit button
@@ -446,7 +446,7 @@ document.querySelector('#addscore a').addEventListener('click', () => {
 
 Great! We've got access to user values in JavaScript. Empty your `scores` array:
 
-~~~
+~~~js
 let scores = [
   /*
   ['TAB','1991-03-03','12345'],
@@ -458,7 +458,7 @@ let scores = [
 
 Call an `insertEntry()` function:
 
-~~~
+~~~js
   ...
 
   console.log(entry);
@@ -469,7 +469,7 @@ Call an `insertEntry()` function:
 And, turn your existing entry code into a corresponding function:
 
 *js.js*
-~~~
+~~~js
 // insert entry
 
 function insertEntry(entry) {
@@ -488,7 +488,7 @@ You can now add entries using the form:
 
 Finally, add some validation logic. The complete submit button code looks like this:
 
-~~~
+~~~js
 // submit button
 
 document.querySelector('#addscore a').addEventListener('click', () => {
