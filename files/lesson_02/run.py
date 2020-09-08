@@ -13,7 +13,6 @@ def index():
 
 @app.route('/scores', methods=['GET'])
 def scores_list():
-    #return 'score'
     #return jsonify('score')
     con = sqlite3.connect(SCORESDB)
     scores = []
@@ -31,4 +30,4 @@ def scores_add():
     cur = con.execute('INSERT INTO scores(name,date,score) VALUES(?,?,?)', entry)
     con.commit()
     con.close()
-    return 'success'
+    return jsonify('success')
