@@ -419,8 +419,6 @@ Add the following features:
 212 Arcade
 ==========
 
-Convert your *212 Arcade* div-based graphs to an SVG solution, as per this code:
-
-https://github.com/tabreturn/tutorial-212-arcade/tree/master/lesson_03
+Convert your *212 Arcade* div-based graphs to an SVG solution.
 
 *end*
