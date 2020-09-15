@@ -73,9 +73,6 @@ To begin creating shapes, add an empty `svg` tag; this will serve as your 'drawi
 Add some CSS to style the background and outline the SVG element:
 
 ```css
-    ...
-
-    <style>
       html, body {
         align-items: center;
         background-color: #888;
@@ -86,7 +83,6 @@ Add some CSS to style the background and outline the SVG element:
       svg {
         outline: 1px dashed #666;
       }
-    ...
 ```
 
 ![](01-start.png)
@@ -114,7 +110,6 @@ The attributes (`x`, `y`, `width`, `height`, `fill`) should be self-explanatory.
         stroke: #000;
         stroke-width: 15;
       }
-    </style>
 ```
 
 ![](02-rect.png)
@@ -317,7 +312,6 @@ To begin, add some CSS to change the cursor to a pointer whenever it hovers over
       #portafilter, #startbutton, #cup {
         cursor: pointer;
       }
-    </style>
 ```
 
 You have the GSAP library linked in the `head` of your HTML document, and an empty pair of `script` tags (just before the closing `</body>` tag) for adding your JavaScript code. Let's begin with an event listener---which works exactly the same way as it would with HTML:
