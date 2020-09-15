@@ -107,7 +107,7 @@ Use the `<rect>` tag to draw a rectangle:
 
 The attributes (`x`, `y`, `width`, `height`, `fill`) should be self-explanatory. The `class` attribute is for applying some CSS styling. Add this corresponding rule to your internal stylesheet:
 
-```
+```html
       ...
 
       svg .stroked {
@@ -322,7 +322,7 @@ To begin, add some CSS to change the cursor to a pointer whenever it hovers over
 
 You have the GSAP library linked in the `head` of your HTML document, and an empty pair of `script` tags (just before the closing `</body>` tag) for adding your JavaScript code. Let's begin with an event listener---which works exactly the same way as it would with HTML:
 
-```
+```html
     <script>
       document.getElementById('portafilter').addEventListener('click', function dockPortafilter() {
         alert('clicked');
@@ -336,7 +336,7 @@ SVG is part of the DOM, so JavaScript does pretty much all the same things in SV
 
 Replace the `alert` with some tween code:
 
-```
+```html
     <script>
       document.getElementById('portafilter').addEventListener('click', function dockPortafilter() {
         gsap.to('#portafilter', 1, { x:240 });
@@ -352,7 +352,7 @@ Clicking the portafilter moves it into position above the cup, performing a smoo
 
 Once this motion is complete, you can press the red button (to start the machine). To add the event listener for the red button *after* the tween is complete, you'll use a *callback* function. Add this as an additional parameter to your existing `gsap.to`:
 
-```
+```js
         ...
         gsap.to('#portafilter', 1, { x:240, onComplete:activateButton });
         ...
@@ -360,11 +360,12 @@ Once this motion is complete, you can press the red button (to start the machine
 
 The `onComplete:activateButton` specifies that once the tween is finished, JavaScript must call a function named `activateButton`. Define that function, and set the `y` attribute of the coffee in the mug to `310` (to have it start empty):
 
-```
+```html
         ...
           <rect id="cuplevel" x="325" y="310" width="150" height="60" fill="#F00" />
         ...
-
+```
+```js
       ...
       let sb = document.getElementById('startbutton');
 
@@ -385,7 +386,7 @@ The `activateButton()` function sets the button fill to green and adds a new eve
 
 Add another callback:
 
-```
+```js
         ...
           gsap.to('#cuplevel', 2, { y:-60, onComplete:deactivateButton });
           ...
@@ -393,7 +394,7 @@ Add another callback:
 
 And a corresponding function to add some frothy milk to the mug:
 
-```
+```js
       function deactivateButton() {
         sb.setAttribute('fill','#F00');
         document.getElementById('cup').addEventListener('click', function addMilk() {
