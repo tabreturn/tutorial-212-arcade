@@ -72,7 +72,7 @@ To begin creating shapes, add an empty `svg` tag; this will serve as your 'drawi
 
 Add some CSS to style the background and outline the SVG element:
 
-```html
+```css
     ...
 
     <style>
@@ -107,7 +107,7 @@ Use the `<rect>` tag to draw a rectangle:
 
 The attributes (`x`, `y`, `width`, `height`, `fill`) should be self-explanatory. The `class` attribute is for applying some CSS styling. Add this corresponding rule to your internal stylesheet:
 
-```html
+```css
       ...
 
       svg .stroked {
@@ -311,7 +311,7 @@ https://greensock.com/docs/3
 
 To begin, add some CSS to change the cursor to a pointer whenever it hovers over some (soon-to-be) clickable element:
 
-```html
+```css
       ...
 
       #portafilter, #startbutton, #cup {
